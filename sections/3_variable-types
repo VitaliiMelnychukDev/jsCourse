@@ -1,0 +1,39 @@
+// var, let, const
+// var - older keyword to define variables
+
+/* Topics:
+ *   - simple variable types (number, string, boolean, undefined, Symbol, BigInt)
+ *   - refernce types (object, arrays, null)
+ *   - number (Infinity, NaN)
+ *   - Object types (Number, Boolean, String);
+ *   -
+ *   -
+ */
+
+const numberVariable = 234;
+const stringVariable = "JS Course";
+const booleanVariable = true;
+
+const samsungS24 = {
+  name: "Samsung S24",
+  price: 20434.43,
+  hasFaceID: true,
+};
+
+const iPhone10 = {
+  name: "iPhone 10",
+  price: 10434.43,
+  hasFaceID: false,
+};
+
+const nullObject = null;
+
+const notANumberTestVariable = stringVariable / numberVariable;
+
+const samsung24Type = typeof samsungS24;
+
+console.log("Samsung Variable Type: ", samsung24Type);
+
+const numberObjectVariable = Number(2323);
+const stringObjectVariable = String("Test String");
+const booleanObjectVariable = Boolean(true);
