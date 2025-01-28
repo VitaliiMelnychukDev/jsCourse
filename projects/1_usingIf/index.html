@@ -26,10 +26,21 @@
     <div class="block blackBlock"></div>
     <div class="block blueBlock"></div>
     <script>
-      let blockToHide = "black";
+      let blockToHide = "green";
 
       let blockToHideClass;
-      switch (blockToHide) {
+
+      if (blockToHide === "red") {
+        blockToHideClass = "redBlock";
+      } else if (blockToHide === "green") {
+        blockToHideClass = "greenBlock";
+      } else if (blockToHide === "black") {
+        blockToHideClass = "blackBlock";
+      } else if (blockToHide === "blue") {
+        blockToHideClass = "blueBlock";
+      }
+
+      /* switch (blockToHide) {
         case "red":
           blockToHideClass = "redBlock";
           break;
@@ -45,14 +56,12 @@
         default:
           blockToHideClass = undefined;
           break;
-      }
+      } */
 
       if (blockToHideClass) {
-        const htmlElements = document.getElementsByClassName(blockToHideClass);
-
-        if (htmlElements.length > 0) {
-          htmlElements[0].style.display = "none";
-        }
+        const htmlElements =
+          document.getElementsByClassName(blockToHideClass)[0];
+        htmlElements.style.display = "none";
       }
     </script>
   </body>
