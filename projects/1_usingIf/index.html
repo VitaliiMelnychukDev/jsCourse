@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <style>
+      .block {
+        width: 100%;
+        height: 100px;
+        margin-bottom: 10px;
+      }
+      .redBlock {
+        background-color: red;
+      }
+      .greenBlock {
+        background-color: green;
+      }
+      .blackBlock {
+        background-color: black;
+      }
+      .blueBlock {
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="block redBlock"></div>
+    <div class="block greenBlock"></div>
+    <div class="block blackBlock"></div>
+    <div class="block blueBlock"></div>
+    <script>
+      let blockToHide = "black";
+
+      let blockToHideClass;
+      switch (blockToHide) {
+        case "red":
+          blockToHideClass = "redBlock";
+          break;
+        case "green":
+          blockToHideClass = "greenBlock";
+          break;
+        case "black":
+          blockToHideClass = "blackBlock";
+          break;
+        case "blue":
+          blockToHideClass = "blueBlock";
+          break;
+        default:
+          blockToHideClass = undefined;
+          break;
+      }
+
+      if (blockToHideClass) {
+        const htmlElements = document.getElementsByClassName(blockToHideClass);
+
+        if (htmlElements.length > 0) {
+          htmlElements[0].style.display = "none";
+        }
+      }
+    </script>
+  </body>
+</html>
