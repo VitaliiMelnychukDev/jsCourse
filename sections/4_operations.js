@@ -76,4 +76,4 @@ console.log("Less Or Equal: 6 <= 6", 6 <= 6); */
 /* console.log(3 > "2");
 console.log(3 > null);
 console.log(0 > null);
-console.log(true > 0); */ß
+console.log(true > 0); */
