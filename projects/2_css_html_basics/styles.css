@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#mainContainer {
+  background-color: red;
+  min-height: calc(100vh - 120px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-image: url("./images/laptop-background.jpg");
+  background-size: cover;
+}
+
+header,
+footer {
+  width: 100%;
+  background-color: black;
+  height: 60px;
+  color: white;
+}
+
+footer {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+}
+
+.menuItem {
+  color: white;
+  padding: 0px 20px;
+  font-size: 22px;
+}
+
+.menuItem:hover {
+  color: #f1db25;
+  cursor: pointer;
+}
+
+.productContainer {
+  width: 300px;
+  height: 300px;
+  background-color: white;
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.phoneImage {
+  width: 120px;
+  margin: 30px 0 10px 0;
+}
+
+.productName {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 10px;
+}
+
+.readMore {
+  background-color: #f1db25;
+  color: white;
+  border: 1px solid black;
+  padding: 10px 30px;
+  font-size: 18px;
+}
+
+.readMore:hover {
+  cursor: pointer;
+}

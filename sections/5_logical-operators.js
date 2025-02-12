@@ -1,19 +1,19 @@
-const birthdayYear = 2009;
+const birthdayYear = 2013;
 
 if (birthdayYear >= 2000) {
   console.log("You were borned in 20s century");
 } else {
-  console.log('You were borned in 19s century"');
+  console.log("You were borned in 19s century");
 }
 
 const birhdayString =
-  birthdayYear < 2000
+  birthdayYear >= 2000
     ? "You were borned in 20s century"
     : "You were borned in 19s century";
 console.log(`Using ? operator ${birhdayString}`);
 
 if (birthdayYear < 2000) {
-  console.log("You were borned in 20s century");
+  console.log("You were borned in 19s century");
 } else if (birthdayYear >= 2000 && birthdayYear < 2010) {
   console.log("You were borned in 2010s decade");
 } else if (birthdayYear >= 2010 && birthdayYear < 2020) {
@@ -22,7 +22,7 @@ if (birthdayYear < 2000) {
   console.log("You were borned in 2030s decade");
 }
 
-const gradeIn12System = 10;
+const gradeIn12System = 3;
 let gradeIn5System;
 
 switch (gradeIn12System) {
