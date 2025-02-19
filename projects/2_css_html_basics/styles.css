@@ -84,3 +84,42 @@ nav {
 .readMore:hover {
   cursor: pointer;
 }
+
+#articlesContainer {
+  background-color: #f1db25;
+  padding: 20px 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.textContainer {
+  background-color: white;
+  min-width: 400px;
+  max-width: 400px;
+  margin: 20px;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.shortText {
+  font-size: 20px;
+  margin-top: 25px;
+
+  display: block;
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.readFullText {
+  background-color: #f1db25;
+  border: 1px solid black;
+  color: white;
+  padding: 8px 30px;
+  font-size: 20px;
+  margin-top: 20px;
+}

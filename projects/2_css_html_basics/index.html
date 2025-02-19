@@ -38,6 +38,60 @@
         <button class="readMore">Read More</button>
       </div>
     </div>
+    <div id="articlesContainer">
+      <div class="textContainer">
+        <div class="shortText">Acer Aspire 5</div>
+        <button class="readFullText">Read Full Text</button>
+      </div>
+      <div class="textContainer">
+        <div class="shortText">Acer Aspire 5</div>
+        <button class="readFullText">Read Full Text</button>
+      </div>
+    </div>
     <footer>Developed in 2025</footer>
   </body>
+  <script>
+    const articles = [
+      "Acer Aspire 5",
+      "Acer Aspire 6",
+      "Acer Aspire 7",
+      "Acer Aspire 8",
+      "Acer Aspire 8 Acer Aspire 8Acer Aspire 8Acer Aspire 8",
+    ];
+
+    function createHTMLElement(tag, text, className) {
+      const newHtmlElement = document.createElement(tag);
+      newHtmlElement.innerText = text;
+      newHtmlElement.classList.add(className);
+
+      return newHtmlElement;
+    }
+
+    const articlesContainer = document.getElementById("articlesContainer");
+
+    articles.forEach((article) => {
+      const textContainer = document.createElement("div");
+      textContainer.classList.add("textContainer");
+
+      /*const shortText = document.createElement("div");
+      shortText.innerText = article;
+      shortText.classList.add("shortText");
+
+      const readFullText = document.createElement("button");
+      readFullText.innerText = "Read More";
+      readFullText.classList.add("readFullText");*/
+
+      const shortText = createHTMLElement("div", article, "shortText");
+      const readFullText = createHTMLElement(
+        "button",
+        "Read More",
+        "readFullText"
+      );
+
+      textContainer.appendChild(shortText);
+      textContainer.appendChild(readFullText);
+
+      articlesContainer.appendChild(textContainer);
+    });
+  </script>
 </html>
