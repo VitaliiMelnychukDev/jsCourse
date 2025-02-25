@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.elements {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: white;
+}
+
+.element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  border: 3px solid black;
+  margin: 10px;
+}
+
+.whiteElement {
+  background-color: white;
+}
+
+.greenElement {
+  background-color: green;
+}
+
+.redElement {
+  background-color: red;
+}
+
+.blueElement {
+  background-color: blue;
+}
+
+.yellowElement {
+  background-color: yellow;
+}
+
+.elementText {
+  font-size: 20px;
+}
+
+button {
+  background-color: black;
+  border: 1px solid grey;
+  color: white;
+  padding: 8px 30px;
+  font-size: 20px;
+  margin: 20px;
+}
+
+button:hover {
+  cursor: pointer;
+}
