@@ -1,0 +1,167 @@
+<html>
+  <head>
+    <title>First Form</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="siteContainer">
+      <form id="firstForm">
+        <div class="formField">
+          <label class="formLabel" for="firstName">First Name</label>
+          <input
+            name="firstName"
+            id="firstName"
+            class="textField"
+            type="text"
+            required
+            minlength="2"
+            maxlength="50"
+            placeholder="Your First Name"
+          />
+        </div>
+        <div class="formField">
+          <label class="formLabel" for="lastName">Last Name</label>
+          <input
+            name="lastName"
+            id="lastName"
+            class="textField"
+            type="text"
+            required
+            minlength="2"
+            maxlength="50"
+            placeholder="Your Last Name"
+          />
+        </div>
+        <div class="formField">
+          <label class="formLabel" for="date">Date</label>
+          <input name="date" id="date" class="textField" type="date" required />
+        </div>
+        <div class="formField">
+          <label class="formLabel" for="email">Email</label>
+          <input
+            name="email"
+            id="email"
+            class="textField"
+            type="email"
+            required
+            minlength="2"
+            maxlength="100"
+            placeholder="Your Email"
+            autocomplete="off"
+          />
+        </div>
+        <div class="formField">
+          <label class="formLabel" for="city">City</label>
+          <select name="city" class="textField">
+            <option value="lviv">Lviv</option>
+            <option value="vinnytsia" selected>Vinnytsia</option>
+            <option value="kiev">Kiev</option>
+            <option value="odessa">Odessa</option>
+          </select>
+        </div>
+        <div class="formField">
+          <div class="formLabel" for="favoriteLanguage">
+            Please chose languages your know
+          </div>
+          <div class="checkboxContainer">
+            <input
+              name="languageHTML"
+              id="languageHTML"
+              class="checkboxField"
+              type="checkbox"
+            />
+            <label class="formCheckboxLabel" for="languageHTML">HTML</label>
+          </div>
+          <div class="checkboxContainer">
+            <input
+              name="languageCSS"
+              id="languageCSS"
+              class="checkboxField"
+              type="checkbox"
+            />
+            <label class="formCheckboxLabel" for="languageCSS">CSS</label>
+          </div>
+          <div class="checkboxContainer">
+            <input
+              name="languageJS"
+              id="languageJS"
+              class="checkboxField"
+              type="checkbox"
+            />
+            <label class="formCheckboxLabel" for="languageJS">JS</label>
+          </div>
+        </div>
+        <div class="formField">
+          <div class="formLabel" for="favoriteLanguage">
+            Please chose your favorite language
+          </div>
+          <div class="radioButtonContainer">
+            <input
+              name="favoriteLanguage"
+              id="favoriteLanguageHTML"
+              class="radioField"
+              value="html"
+              type="radio"
+            />
+            <label class="formRadioLabel" for="favoriteLanguageHTML"
+              >HTML</label
+            >
+          </div>
+          <div class="radioButtonContainer">
+            <input
+              name="favoriteLanguage"
+              id="favoriteLanguageCSS"
+              class="radioField"
+              value="css"
+              type="radio"
+            />
+            <label class="formRadioLabel" for="favoriteLanguageCSS">CSS</label>
+          </div>
+          <div class="radioButtonContainer">
+            <input
+              name="favoriteLanguage"
+              id="favoriteLanguageJS"
+              class="radioField"
+              value="js"
+              type="radio"
+            />
+            <label class="formRadioLabel" for="favoriteLanguageJS">JS</label>
+          </div>
+        </div>
+        <div class="formField">
+          <label class="formLabel" for="description">Description</label>
+          <textarea
+            class="textField"
+            name="description"
+            id="description"
+            rows="5"
+          ></textarea>
+        </div>
+        <button class="registerButton">Register</button>
+
+        <div id="formResult"></div>
+      </form>
+    </div>
+  </body>
+  <script>
+    const registerForm = document.getElementById("firstForm");
+    document.addEventListener("submit", (event) => {
+      event.preventDefault();
+      console.log("Form submitted");
+
+      const registerFormData = new FormData(registerForm);
+      console.log(registerFormData);
+
+      const formResultContainer = document.getElementById("formResult");
+      formResultContainer.innerHTML = "";
+
+      for (let [key, value] of registerFormData.entries()) {
+        const formResultElement = document.createElement("div");
+        formResultElement.classList.add("formResultElement");
+        formResultElement.innerText = `${key}: ${value}`;
+
+        formResultContainer.append(formResultElement);
+      }
+    });
+  </script>
+</html>
