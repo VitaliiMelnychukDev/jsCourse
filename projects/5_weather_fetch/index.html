@@ -1,0 +1,154 @@
+<html>
+  <head>
+    <title>First Form</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="siteContainer">
+      <form id="weatherForm">
+        <div class="formField">
+          <label class="formLabel" for="city">City</label>
+          <select name="city" class="textField" id="city">
+            <option value="lviv">Lviv</option>
+            <option value="vinnytsia" selected>Vinnytsia</option>
+            <option value="kyiv">Kyiv</option>
+            <option value="odesa">Odesa</option>
+          </select>
+        </div>
+        <button class="getWeatherButton">Get Weather</button>
+
+        <div id="weatherData"></div>
+      </form>
+    </div>
+  </body>
+  <script>
+    const lvivCoordinate = {
+      latitude: 49.8397,
+      longitude: 24.0297,
+    };
+
+    const kyivCoordinate = {
+      latitude: 50.4501,
+      longitude: 30.5234,
+    };
+
+    const vinnytsiaCoordinate = {
+      latitude: 49.2331,
+      longitude: 28.4682,
+    };
+
+    const odesaCoordinate = {
+      latitude: 46.4825,
+      longitude: 30.7233,
+    };
+
+    const citiesCoordinates = {
+      lviv: lvivCoordinate,
+      vinnytsia: vinnytsiaCoordinate,
+      kyiv: kyivCoordinate,
+      odesa: odesaCoordinate,
+    };
+
+    const weatherForm = document.getElementById("weatherForm");
+
+    const getWeatherUrl = (cityCoordinate) => {
+      return `https://api.open-meteo.com/v1/forecast?latitude=${cityCoordinate.latitude}&longitude=${cityCoordinate.longitude}&current_weather=true`;
+    };
+
+    const clearWeatherData = () => {
+      const weatherDataElement = document.getElementById("weatherData");
+      weatherDataElement.textContent = "";
+    };
+
+    const printError = (errorMessage) => {
+      clearWeatherData();
+      const weatherDataElement = document.getElementById("weatherData");
+
+      const errorElement = document.createElement("div");
+      errorElement.textContent = errorMessage;
+      errorElement.classList.add("errorItem");
+      weatherDataElement.append(errorElement);
+    };
+
+    const printWeatherData = (weatherData) => {
+      clearWeatherData();
+      const weatherDataElement = document.getElementById("weatherData");
+
+      weatherData.forEach((weatherDataItem) => {
+        const weatherInfo = `${weatherDataItem.title}: ${weatherDataItem.value} ${weatherDataItem.units}`;
+
+        const weatherItemElement = document.createElement("div");
+        weatherItemElement.textContent = weatherInfo;
+        weatherItemElement.classList.add("weatherItem");
+        weatherDataElement.append(weatherItemElement);
+      });
+    };
+
+    const printLoader = () => {
+      clearWeatherData();
+
+      const weatherDataElement = document.getElementById("weatherData");
+      const loaderElement = document.createElement("div");
+      loaderElement.textContent = "Loading...";
+      loaderElement.classList.add("loader");
+      weatherDataElement.append(loaderElement);
+    };
+
+    const disableButton = () => {
+      const getWeatherButton = document.querySelector(".getWeatherButton");
+      getWeatherButton.setAttribute("disabled", true);
+    };
+
+    const enableButton = () => {
+      const getWeatherButton = document.querySelector(".getWeatherButton");
+      getWeatherButton.removeAttribute("disabled");
+    };
+
+    const fetchWeatherAndShow = (cityCoordinate) => {
+      printLoader();
+      disableButton();
+      const weatherUrl = getWeatherUrl(cityCoordinate);
+
+      fetch(weatherUrl)
+        .then((data) => data.json())
+        .then((data) => {
+          const temparatureData = {
+            title: "Temparature",
+            value: data.current_weather.temperature,
+            units: data.current_weather_units.temperature,
+          };
+
+          const windSpeedData = {
+            title: "Wind Speed",
+            value: data.current_weather.windspeed,
+            units: data.current_weather_units.windspeed,
+          };
+
+          setTimeout(() => {
+            printWeatherData([temparatureData, windSpeedData]);
+            enableButton();
+          }, 5000);
+        })
+        .catch((err) => {
+          enableButton();
+          printError("Something went wrong. Please try later.");
+        });
+    };
+
+    weatherForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const city = document.getElementById("city").value;
+
+      const cityCoordinates = citiesCoordinates[city];
+
+      if (!cityCoordinates) {
+        printError(`Can not fetch weather for ${city}`);
+
+        return;
+      }
+
+      fetchWeatherAndShow(cityCoordinates);
+    });
+  </script>
+</html>
