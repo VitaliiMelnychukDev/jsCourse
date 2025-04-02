@@ -74,6 +74,13 @@
       clearWeatherData();
       const weatherDataElement = document.getElementById("weatherData");
 
+      const nowTime = new Date();
+      const dateString = `Date: ${nowTime.getDate()}.${nowTime.getMonth()}.${nowTime.getFullYear()} ${nowTime.getHours()}:${nowTime.getMinutes()}:${nowTime.getSeconds()}`;
+      const weatherItemElement2 = document.createElement("div");
+      weatherItemElement2.textContent = dateString;
+      weatherItemElement2.classList.add("weatherItem");
+      weatherDataElement.append(weatherItemElement2);
+
       weatherData.forEach((weatherDataItem) => {
         const weatherInfo = `${weatherDataItem.title}: ${weatherDataItem.value} ${weatherDataItem.units}`;
 
@@ -104,9 +111,11 @@
       getWeatherButton.removeAttribute("disabled");
     };
 
-    const fetchWeatherAndShow = (cityCoordinate) => {
-      printLoader();
-      disableButton();
+    const fetchWeatherAndShow = (cityCoordinate, showLoading) => {
+      if (showLoading) {
+        printLoader();
+        disableButton();
+      }
       const weatherUrl = getWeatherUrl(cityCoordinate);
 
       fetch(weatherUrl)
@@ -127,13 +136,15 @@
           setTimeout(() => {
             printWeatherData([temparatureData, windSpeedData]);
             enableButton();
-          }, 5000);
+          }, 1000);
         })
         .catch((err) => {
           enableButton();
           printError("Something went wrong. Please try later.");
         });
     };
+
+    let previousCityInterval;
 
     weatherForm.addEventListener("submit", (event) => {
       event.preventDefault();
@@ -148,7 +159,14 @@
         return;
       }
 
-      fetchWeatherAndShow(cityCoordinates);
+      if (previousCityInterval) {
+        clearInterval(previousCityInterval);
+      }
+
+      fetchWeatherAndShow(cityCoordinates, true);
+      previousCityInterval = setInterval(() => {
+        fetchWeatherAndShow(cityCoordinates, false);
+      }, 5000);
     });
   </script>
 </html>
