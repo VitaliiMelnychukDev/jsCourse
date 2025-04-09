@@ -1,0 +1,76 @@
+<html>
+  <head> </head>
+  <body>
+    <div id="mainConteiner">Test</div>
+  </body>
+  <script>
+    const returnTextWithinTime = (text, delay) => {
+      return new Promise((resolve, reject) => {
+        if (typeof delay !== "number") {
+          reject("Delay should be a number");
+        }
+
+        setTimeout(() => {
+          resolve(text);
+        }, delay);
+      });
+    };
+
+    returnTextWithinTime("Hello", 2000)
+      .then((data) => {
+        console.log("Promise Data: ", data);
+      })
+      .catch((err) => {
+        console.log(`Error occured: ${err}`);
+      });
+
+    const getWeatherUrl = (latitude, longitude) => {
+      return `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`;
+    };
+
+    const getWeather = (latitude, longtitude) => {
+      const openMeteoUrl = getWeatherUrl(latitude, longtitude);
+
+      return fetch(openMeteoUrl);
+    };
+
+    const weatherData = getWeather(49.2331, 28.4682)
+      .then((data) => {
+        console.log("Data: ", data);
+
+        return data.json();
+      })
+      .then((readyData) => {
+        console.log("readyData: ", readyData);
+      })
+      .catch((err) => {
+        console.log("Error: ", err);
+      })
+      .finally(() => {
+        console.log("Finally: ");
+      });
+
+    const printWeather = async () => {
+      try {
+        const weatherDataRow = await getWeather(49.2331, 28.4682);
+        const readyWeatherData = await weatherDataRow.json();
+
+        console.log("weatherData: ", readyWeatherData);
+      } catch (err) {
+        console.log("Error: ", err);
+      }
+    };
+
+    printWeather();
+
+    const testObject = {
+      data: "Test",
+    };
+
+    try {
+      console.log(testObject.data.testt.sdfsdfs);
+    } catch (err) {
+      console.log("Some corrupted data!!!");
+    }
+  </script>
+</html>
