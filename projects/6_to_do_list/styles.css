@@ -62,12 +62,25 @@ body {
   font-size: 15px;
 }
 
-.addListItem {
-  padding: 5px 10px;
-  font-size: 18px;
-  margin-top: 10px;
-  width: 150px;
+.greyButton {
   border-radius: 10px;
   border: 1px solid black;
   cursor: pointer;
+  padding: 5px 10px;
+  font-size: 18px;
+}
+
+.addListItem {
+  margin-top: 10px;
+  width: 150px;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.deleteAllItems {
+  width: 200px;
 }
