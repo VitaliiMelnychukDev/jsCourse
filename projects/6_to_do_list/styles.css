@@ -1,0 +1,73 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.listContainer {
+  width: 650px;
+  border: 1px solid black;
+  margin: 20px;
+}
+
+.listItem {
+  padding: 10px 10px 10px 30px;
+  display: flex;
+  border-bottom: 1px solid black;
+}
+
+.listItemRemoveContainer {
+  margin-left: auto;
+  border: 1px solid black;
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+  justify-content: center;
+  display: flex;
+  cursor: pointer;
+}
+
+.listItemRemoveIcon {
+  font-size: 20px;
+  margin-top: -4px;
+}
+
+#addItemForm {
+  padding: 10px 20px;
+  background-color: blanchedalmond;
+  border-bottom: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formInputContainer {
+  width: 100%;
+}
+
+.listItemName {
+  width: 100%;
+  font-size: 15px;
+}
+
+.itemName {
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 15px;
+}
+
+.addListItem {
+  padding: 5px 10px;
+  font-size: 18px;
+  margin-top: 10px;
+  width: 150px;
+  border-radius: 10px;
+  border: 1px solid black;
+  cursor: pointer;
+}

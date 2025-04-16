@@ -1,0 +1,86 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="listContainer">
+      <form id="addItemForm">
+        <div class="formInputContainer">
+          <input
+            class="itemName"
+            minlength="3"
+            name="itemName"
+            placeholder="Item Name"
+          />
+        </div>
+        <button class="addListItem">Add Item</button>
+      </form>
+      <div class="listItems"></div>
+    </div>
+  </body>
+  <script>
+    const textItems = [];
+
+    const buildListItemName = (text) => {
+      const listItemNameElement = document.createElement("span");
+      listItemNameElement.classList.add("listItemName");
+      listItemNameElement.textContent = text;
+
+      return listItemNameElement;
+    };
+
+    const buildRemoveIcon = (numberTextElement) => {
+      const listItemRemoveContainerElement = document.createElement("span");
+      listItemRemoveContainerElement.classList.add("listItemRemoveContainer");
+      listItemRemoveContainerElement.addEventListener("click", () => {
+        textItems.splice(numberTextElement, 1);
+        rebuildListItems();
+      });
+
+      const listItemRemoveIconElement = document.createElement("span");
+      listItemRemoveIconElement.classList.add("listItemRemoveIcon");
+      listItemRemoveIconElement.textContent = "x";
+
+      listItemRemoveContainerElement.append(listItemRemoveIconElement);
+
+      return listItemRemoveContainerElement;
+    };
+
+    const buildListItemElement = (textItem, textItemIndex) => {
+      const listItemElement = document.createElement("div");
+      listItemElement.classList.add("listItem");
+
+      const listItemNameElement = buildListItemName(textItem);
+      listItemElement.append(listItemNameElement);
+
+      const removeIcon = buildRemoveIcon(textItemIndex);
+      listItemElement.append(removeIcon);
+
+      return listItemElement;
+    };
+
+    const rebuildListItems = () => {
+      const listItemsElement = document.querySelector(".listItems");
+      listItemsElement.textContent = "";
+
+      textItems.forEach((textItem, textItemIndex) => {
+        const newItemElement = buildListItemElement(textItem, textItemIndex);
+
+        listItemsElement.append(newItemElement);
+      });
+    };
+
+    const addItemFormElement = document.getElementById("addItemForm");
+
+    addItemFormElement.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const newElementText = document.querySelector(".itemName").value;
+
+      if (newElementText) {
+        textItems.push(newElementText);
+        rebuildListItems();
+      }
+    });
+  </script>
+</html>
