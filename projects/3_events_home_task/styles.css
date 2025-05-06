@@ -57,3 +57,10 @@ button {
 button:hover {
   cursor: pointer;
 }
+
+.elementsListTitle {
+  padding: 20px;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+}

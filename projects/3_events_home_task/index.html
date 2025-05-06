@@ -84,10 +84,60 @@
         <button>9: Видалити рамку для червоних елементів</button>
         <button>10: Вивести кількість синіх елементів в консоль</button>
         <button>
-          11: Порахувати суму чисел в залежності від кольору елементів .
+          11: Порахувати суму чисел в залежності від кольору елементів.
+        </button>
+        <button class="paintElementExample">
+          12: нарисувати один жовтий або зелений елемент з випадковою цифрою
+        </button>
+        <button>
+          12: a. нарисувати 10 елементів з випадковими кольорами і цифрами в
+          блоці List Of Elements <br />b. Також нарисувати елементи з сумою по
+          кольорах в блоці List Of Elements Results
         </button>
       </div>
+      <div class="elementsListTitle">List Of Elements</div>
+      <div class="elements taskElementsContainer"></div>
+      <div class="elementsListTitle">List Of Elements Results</div>
+      <div class="elements resultsElementsContainer"></div>
     </main>
   </body>
-  <script></script>
+  <script>
+    const yellowColorClass = "yellowElement";
+    const greenColorClass = "greenElement";
+
+    const getRandomColorClass = () => {
+      const yellowColorNumber = 0;
+      const greenColorNumber = 1;
+
+      const colorClassMap = {
+        [yellowColorNumber]: "yellowElement",
+        [greenColorNumber]: "greenElement",
+      };
+
+      const randomColorNumber = Math.floor(Math.random() * 2);
+
+      return colorClassMap[randomColorNumber];
+    };
+
+    document
+      .querySelector(".paintElementExample")
+      .addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const taskElementsContainer = document.querySelector(
+          ".taskElementsContainer"
+        );
+        taskElementsContainer.textContent = "";
+        const elementDiv = document.createElement("div");
+        elementDiv.classList.add("element");
+        elementDiv.classList.add(getRandomColorClass());
+
+        const elementTextDiv = document.createElement("div");
+        elementTextDiv.classList.add("elementText");
+        elementTextDiv.textContent = Math.floor(Math.random() * 1000);
+        elementDiv.append(elementTextDiv);
+
+        taskElementsContainer.append(elementDiv);
+      });
+  </script>
 </html>
