@@ -30,3 +30,41 @@ button {
 button:hover {
   cursor: pointer;
 }
+
+#siteContainer {
+  display: flex;
+  justify-content: center;
+}
+
+#firstForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  background-color: #f2f2f2;
+  border: 1px solid black;
+  padding: 20px 20px;
+}
+
+.formField {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.formLabel {
+  padding-bottom: 3px;
+  font-size: 14px;
+}
+
+.textField {
+  font-size: 16px;
+  padding: 11px;
+  border: 0px;
+  border-radius: 6px;
+}
+
+.textField:focus {
+  outline: 1px solid black;
+}
