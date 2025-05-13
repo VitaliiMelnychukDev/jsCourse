@@ -45,8 +45,13 @@
         </form>
       </div>
       <div class="buttons">
-        <button>1: Змінити колір тексту на зелений</button>
-        <button>2: Змінити беграунд елемента на синій</button>
+        <button class="changeColorToGreen">
+          1: Змінити колір тексту на зелений
+        </button>
+        <button class="changeBackgroundToBlue">
+          2: Змінити беграунд елемента на синій
+        </button>
+        <button class="changeTextToNew1">2.a: Змінити текст на New 1.</button>
         <button>3: Змінити колір рамки на жовтий</button>
         <button>4: Змінити розмір шрифта на 50px</button>
         <button>5: Змінити висоту елемента на 100px</button>
@@ -58,5 +63,26 @@
       </div>
     </main>
   </body>
-  <script></script>
+  <script>
+    const changeColorToGreenButton = document.querySelector(
+      ".changeColorToGreen"
+    );
+    changeColorToGreenButton.addEventListener("click", () => {
+      document.querySelector(".elementText").style.color = "green";
+    });
+
+    const changeBackgroundToBlueButton = document.querySelector(
+      ".changeBackgroundToBlue"
+    );
+
+    changeBackgroundToBlueButton.addEventListener("click", () => {
+      document.querySelector(".element").style.backgroundColor = "blue";
+    });
+
+    const changeTextToNew1Button = document.querySelector(".changeTextToNew1");
+
+    changeTextToNew1Button.addEventListener("click", () => {
+      document.querySelector("#elementTextId").innerHTML = "New 1";
+    });
+  </script>
 </html>
