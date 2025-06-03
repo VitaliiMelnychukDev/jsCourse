@@ -64,25 +64,21 @@
     </main>
   </body>
   <script>
-    const changeColorToGreenButton = document.querySelector(
-      ".changeColorToGreen"
-    );
-    changeColorToGreenButton.addEventListener("click", () => {
-      document.querySelector(".elementText").style.color = "green";
+    const changeColorToGreen = document.querySelector(".changeColorToGreen");
+    changeColorToGreen.addEventListener("click", () => {
+      document.querySelector("#elementTextId").style.color = "green";
     });
 
-    const changeBackgroundToBlueButton = document.querySelector(
+    const changeBackgroundToBlue = document.querySelector(
       ".changeBackgroundToBlue"
     );
-
-    changeBackgroundToBlueButton.addEventListener("click", () => {
+    changeBackgroundToBlue.addEventListener("click", () => {
       document.querySelector(".element").style.backgroundColor = "blue";
     });
 
-    const changeTextToNew1Button = document.querySelector(".changeTextToNew1");
-
-    changeTextToNew1Button.addEventListener("click", () => {
-      document.querySelector("#elementTextId").innerHTML = "New 1";
+    const changeTextToNew1 = document.querySelector(".changeTextToNew1");
+    changeTextToNew1.addEventListener("click", () => {
+      document.querySelector("#elementTextId").textContent = "New 1";
     });
   </script>
 </html>
